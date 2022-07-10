@@ -125,9 +125,11 @@ main{
    display: grid;
    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
    grid-gap: 1.5rem 1rem;
-
-  padding-left: 2rem ;
-  padding-top: 2rem ;
+    justify-items: center;
+    align-items: stretch;
+  /* padding-left: 2rem ; */
+    padding-top: 2rem ;
+    padding: 1rem;
 }
 
 .card{
@@ -136,7 +138,7 @@ main{
   flex-direction: column;
   justify-content: end;
 
-  width: 16rem;
+  width: 18rem;
   height: 18rem;
 
   border-radius: .5rem;
@@ -182,6 +184,7 @@ main{
 }
 
 .info p{
+  margin-top: .5rem;
   font-size: 1rem;
   max-height: 4rem;
   width: 100%;
