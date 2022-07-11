@@ -2,14 +2,14 @@
     <NavBar/>
     <div>
       <router-view></router-view>
-      <ShoopingInfo />
+      <ShoppingInfo />
     </div>
 </template>
 
 <script>
   import NavBar from './components/NavBar.vue'
   import Home from './views/Home.vue'
-  import ShoopingInfo from './components/ShoopingInfo.vue'
+  import ShoppingInfo from './components/ShoppingInfo.vue'
 
 
 export default {
@@ -17,7 +17,7 @@ export default {
   components: {
     NavBar,
     Home,
-    ShoopingInfo
+    ShoppingInfo
 },
   
 }
