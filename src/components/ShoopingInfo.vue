@@ -1,16 +1,20 @@
 <template>
    <main>
-      <div class="containerCart">
-         <div class="cards">
+      <div class="containerShopping">
+         <h3>Compras</h3>
+         <div class="card">
             <div class="image">
                <img src="" alt="">
             </div>
             <div class="info">
                <h3>Nome do produto</h3>
-               <span>Valor: R$20 </span>
                <p>Descrição</p>
+               <span>Valor: R$20 </span>
             </div>
-           
+            
+            <div class="qtd">
+               <span>2</span>
+            </div>
          </div>
       </div>
       <div class="btn-acesso">
@@ -21,9 +25,23 @@
 
 
 <script>
-    export default{
-        name: 'Cart'
+  export default{
+    name: 'ShoppingInfo',
+    data(){
+      return{
+         title: null,
+         descricao: null,
+         valor: null,
+         qtd: null
+      }
+    },
+    methods: {
+      async getAdesivos() {
+         const req = await fetch("http://localhost:3000/infoAdesivos");
+         const data = await req.json();
+      }
     }
+  }
 
 </script>
 
@@ -36,19 +54,24 @@ main{
    height: 78vh;
    position: fixed;
    right: 5%;
+   top: 18%;
 }
 
-.containerCart{
+.containerShopping{
    padding: 2rem;
    height: 90%;
    border: 1px solid #ccc;
    border-radius: .5rem;
+   z-index: 10;
+   overflow-y: auto;
 }
 
-.cards{
+.card{
    display: flex;
    gap: 1rem;
-   margin-bottom: 2rem;
+   padding: 1rem 0;
+   border-bottom: 1px solid #ccc;
+
 }
 
 .image{
@@ -58,11 +81,35 @@ main{
    border-radius: .5rem;
 }
 
-.info span{
-   font-size: 1.4rem;
 
+.info{
+   width: 65%;
+   height: 7rem;
 }
 
+.info span{
+ font-size: 1.3rem;
+  font-weight: bold;
+  color: #2c3e50;
+   float: bottom;
+}
+
+.info h3{
+   font-size: 1.6rem;
+   font-weight: bold;
+}
+
+.info p{
+  font-size: 1rem;
+  max-height: 4rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.qtd{
+   padding-right: 1rem;
+}
 
 
 .btn-acesso {

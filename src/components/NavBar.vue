@@ -1,40 +1,38 @@
 <template>
-   <header>
-      <div class="containerHeader">
-         <a href="#">ByMex Adesivos</a>
-         <nav>
+   <div id="nav">
+      <div class="containerNav">
+         <span><router-link to="/">ByMex Adesivos</router-link></span>
             <ul>
-               <li><a href="#">Home</a> </li>
-               <li><a href="#">Sobre</a> </li>
-               <li><a href="#">Carrinho</a> </li>
+               <li><router-link to="/">Home</router-link></li>
+               <li><router-link to="/sobre">Sobre</router-link></li>
+               <li><router-link to="/carrinho">Carrinho</router-link></li>
             </ul>
-         </nav>
       </div>
-   </header>
+   </div>
 </template>
 
 
 <script>
    export default {
-      nome: 'Header'
+      nome: 'NavBar',
    }
-
 </script>
 
 
 <style scoped>
 
-header{
+#nav{
    width: 100%;
    position: fixed;
    left: 0;
+   z-index: 10;
+   background: #ccc;
 }
 
-.containerHeader {
+.containerNav {
    width: 95%;
    margin: auto;
-   padding: 4rem 4rem;
-
+   padding: 3rem 4rem 2rem;
 
    display: flex;
    justify-content: space-between;

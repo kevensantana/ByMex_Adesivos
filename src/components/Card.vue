@@ -1,36 +1,29 @@
 <template>
-   <main>
-      <div class="containerHome">
-         <div class="title">
-            <h1>Produtos</h1>
-            <span>Selecione seus adesivos.</span>
-         </div>
 
-         <div class="cards">
-            <div class="card" v-for="(adesivo, index) in adesivos" :key="index">
-               <div class="image">
-                  <img :src="adesivo.image" alt="Adesivo">
-               </div>
-              <div class="info">
-                <span>{{adesivo.valor}}</span>
-                <h3>{{adesivo.title}}</h3>
-                <p>{{adesivo.descricao}}</p>
-              </div>
-            </div>
-         </div>
+  <div class="cards">
+    <div class="card" v-for="(adesivo, index) in adesivos" :key="index">
+        <div class="image">
+          <img :src="adesivo.image" alt="Adesivo">
+        </div>
+      <div class="info">
+        <span>{{adesivo.valor}}</span>
+        <h3>{{adesivo.title}}</h3>
+        <p>{{adesivo.descricao}}</p>
       </div>
-   </main>
-</template>
 
+        <button type="button" @click="count++">Comprar</button>
+    </div>
+  </div>
+</template>
 
 <script>
 
-export default {
-  nome: 'Home',
-  data() {
-      return{
-          nome: 'ByMex Adesivos',
-          adesivos: [
+export default{
+    name: 'Card',
+
+    data(){
+       return{
+        adesivos: [
             {
               id:1, image: "/img/java.jpg", title: 'Java', valor: 'R$20,00',
               descricao: "Uma linguagem de programação orientada a objetos desenvolvida na década de 90 por uma equipe de programadores chefiada por James Gosling."},
@@ -80,48 +73,16 @@ export default {
               id:3, title: 'React', 
               descricao: "Framework de programação..."}
           ]
-      }
-  },
-  created() {
-      
-  }
+       }
+    }
 }
-
 </script>
 
 
 <style scoped>
 
-main{
-  display: flex;
-  width: 70%;
-  height: 78vh;
-  /* border: 1px solid #ccc; */
-  border-radius: .5rem;
-
-}
-
-.containerHome{
-  padding: 1rem 3rem;
-  width: 100%;
-
-}
-
-.title{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.title h1{
-  font-size: 2.5rem;
-}
-
-.title span{
-  color: #828282;
-  margin-right: 3rem;
-}
-
 .cards{
+
    display: grid;
    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
    grid-gap: 1.5rem 1rem;
@@ -139,21 +100,40 @@ main{
   justify-content: end;
 
   width: 18rem;
-  height: 18rem;
+  height: 22rem;
 
   border-radius: .5rem;
 
   border:1px solid #b6b6b6;
-  cursor: pointer;
 
   transition: all 0.3s ease 0s;
 
   position: relative;
   z-index: 1;
+
+  padding-bottom: 1rem;
 }
 
 .card:hover{
    transform: translateY(-7px);
+}
+
+.card button{
+  width: 50%;
+  height: 3rem;
+  margin: auto;
+  cursor: pointer;
+  padding: .5rem;
+  border: none;
+  border-radius: .5rem;
+  color: #fff;
+  background: #28a745;
+
+  font-weight: bold;
+}
+
+.card button:hover{
+  opacity: .8;
 }
 
 .image{
@@ -202,4 +182,4 @@ main{
 
 }
 
-</style>>
+</style>

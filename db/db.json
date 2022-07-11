@@ -1,0 +1,35 @@
+{
+  "infoAdesivos": {
+    "adesivos": [
+      {
+        "id": 1,
+        "image": "/img/java.jpg",
+        "tipo": "Java",
+        "Valor": 20.00,
+        "Descricao": "Uma linguagem de programação orientada a objetos desenvolvida na década de 90 por uma equipe de programadores chefiada por James Gosling."
+      },
+      {
+        "id": 2,
+        "image": "/img/python.png",
+        "tipo": "Python",
+        "Valor": 30.00,
+        "Descricao": "Uma linguagem de programação de alto nível, interpretada de script, imperativa, orientada a objetos e funcional."
+      },
+      {
+        "id": 3,
+        "image": "/img/react.png",
+        "tipo": "React",
+        "Valor": 15.00,
+        "Descricao": "Uma biblioteca JavaScript de código aberto com foco em criar interfaces de usuário em páginas web."
+      },
+      {
+        "id": 4,
+        "tipo": "Angular",
+        "Valor": "",
+        "Descricao": ""
+      }
+    ]
+
+  }
+
+}

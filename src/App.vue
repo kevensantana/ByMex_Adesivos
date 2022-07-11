@@ -1,28 +1,26 @@
 <template>
-  <div>
-    <Header />
-    <div id="conect">
-       <Home />
-       <Cart />
+    <NavBar/>
+    <div>
+      <router-view></router-view>
+      <ShoopingInfo />
     </div>
-  </div>
 </template>
 
 <script>
-  import Header from './components/Header.vue'
-  import Home from './components/Home.vue'
-  import Cart from './components/Cart.vue'
-  import HelloWorld from './components/HelloWorld.vue'
+  import NavBar from './components/NavBar.vue'
+  import Home from './views/Home.vue'
+  import ShoopingInfo from './components/ShoopingInfo.vue'
+
 
 export default {
   name: 'App',
   components: {
-    Header,
+    NavBar,
     Home,
-    Cart,
-  } 
+    ShoopingInfo
+},
+  
 }
-
 </script>
 
 
@@ -38,6 +36,11 @@ export default {
 :root{
   font-size: 62.5%;  /* 1rem=10px */
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
 
 html,
 body{
@@ -58,13 +61,6 @@ a{
   color: #171717;
   text-decoration: none;
 }
-
-#conect{
-  display: flex;
-  padding-top: 10%;
-  gap: 2%;
-}
-
 
 
 /* #app {
