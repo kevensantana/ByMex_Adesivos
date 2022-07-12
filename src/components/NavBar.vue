@@ -21,14 +21,6 @@
 
 <style scoped>
 
-#nav{
-   width: 100%;
-   position: fixed;
-   left: 0;
-   z-index: 10;
-   background: #ccc;
-}
-
 .containerNav {
    width: 95%;
    margin: auto;

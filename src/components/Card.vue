@@ -1,79 +1,43 @@
 <template>
 
   <div class="cards">
-    <div class="card" v-for="(adesivo, index) in adesivos" :key="index">
+    <div class="card" v-for="adesivo in adesivos" :key="adesivo.id">
         <div class="image">
           <img :src="adesivo.image" alt="Adesivo">
         </div>
       <div class="info">
-        <span>{{adesivo.valor}}</span>
-        <h3>{{adesivo.title}}</h3>
-        <p>{{adesivo.descricao}}</p>
+        <span :value="adesivo.valor">{{ adesivo.valor.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}}</span>
+        <h3 :value="adesivo.title">{{adesivo.title}}</h3>
+        <p :value="adesivo.descricao">{{adesivo.descricao}}</p>
       </div>
 
-        <button type="button" @click="count++">Comprar</button>
+        <button type="type" onclick="$emit('createCart')">Comprar</button>
     </div>
   </div>
 </template>
 
 <script>
 
+
 export default{
     name: 'Card',
+    emits:['createCart'],
 
     data(){
        return{
-        adesivos: [
-            {
-              id:1, image: "/img/java.jpg", title: 'Java', valor: 'R$20,00',
-              descricao: "Uma linguagem de programação orientada a objetos desenvolvida na década de 90 por uma equipe de programadores chefiada por James Gosling."},
-            {
-              id:2, image: "/img/python.png", title: 'Python', valor: 'R$30,00',
-              descricao: "Uma linguagem de programação de alto nível, interpretada de script, imperativa, orientada a objetos e funcional."},
-            {  
-              id:3, image: "/img/react.png", title: 'React', valor: 'R$15,00',
-              descricao: "Uma biblioteca JavaScript de código aberto com foco em criar interfaces de usuário em páginas web."},
-            {
-              id:1, title: 'Java',  
-              descricao: "Linguade de programação..."},
-            {
-              id:2, title: 'Python',
-              descricao: "Linguade de programação..."},
-            {
-              id:3, title: 'React', 
-              descricao: "Framework de programação..."}
-            ,
-            {
-              id:1, title: 'Java',  
-              descricao: "Linguade de programação..."},
-            {
-              id:2, title: 'Python',
-              descricao: "Linguade de programação..."},
-            {
-              id:3, title: 'React', 
-              descricao: "Framework de programação..."}
-            ,
-            {
-              id:1, title: 'Java',  
-              descricao: "Linguade de programação..."},
-            {
-              id:2, title: 'Python',
-              descricao: "Linguade de programação..."},
-            {
-              id:3, title: 'React', 
-              descricao: "Framework de programação..."}
-            ,
-            {
-              id:1, title: 'Java',  
-              descricao: "Linguade de programação..."},
-            {
-              id:2, title: 'Python',
-              descricao: "Linguade de programação..."},
-            {
-              id:3, title: 'React', 
-              descricao: "Framework de programação..."}
-          ]
+        adesivos: null
        }
+    },
+     methods: {
+      async getAdesivos() {
+         const req = await fetch('http://localhost:3000/infoadesivos')
+         const data = await req.json()
+
+         this.adesivos = data.adesivos;
+      }
+    },
+    mounted() {
+     this.getAdesivos()
     }
 }
 </script>

@@ -4,29 +4,54 @@
       {
         "id": 1,
         "image": "/img/java.jpg",
-        "tipo": "Java",
-        "Valor": 20.00,
-        "Descricao": "Uma linguagem de programação orientada a objetos desenvolvida na década de 90 por uma equipe de programadores chefiada por James Gosling."
+        "title": "Java",
+        "qtd": 20,
+        "valor": 20,
+        "descricao": "Uma linguagem de programação orientada a objetos desenvolvida na década de 90 por uma equipe de programadores chefiada por James Gosling."
       },
       {
         "id": 2,
         "image": "/img/python.png",
-        "tipo": "Python",
-        "Valor": 30.00,
-        "Descricao": "Uma linguagem de programação de alto nível, interpretada de script, imperativa, orientada a objetos e funcional."
+        "title": "Python",
+        "qtd": 20,
+        "valor": 30,
+        "descricao": "Uma linguagem de programação de alto nível, interpretada de script, imperativa, orientada a objetos e funcional."
       },
       {
         "id": 3,
         "image": "/img/react.png",
-        "tipo": "React",
-        "Valor": 15.00,
-        "Descricao": "Uma biblioteca JavaScript de código aberto com foco em criar interfaces de usuário em páginas web."
+        "title": "React",
+        "qtd": 20,
+        "valor": 15,
+        "descricao": "Uma biblioteca JavaScript de código aberto com foco em criar interfaces de usuário em páginas web."
       },
       {
         "id": 4,
-        "tipo": "Angular",
-        "Valor": "",
-        "Descricao": ""
+        "image": "/img/angular.png",
+        "title": "Angular",
+        "valor": 50,
+        "descricao": "Uma plataforma de aplicações web de código-fonte aberto e front-end baseado em TypeScript liderado pela Equipe Angular do Google."
+      }
+    ]
+  },
+
+  "Pagamentos": {
+    "formaPagamento": [
+      {
+        "id": 1,
+        "tipo": "Cartão de crédito"
+      },
+      {
+        "id": 2,
+        "tipo": "Cartão de débito"
+      },
+      {
+        "id": 3,
+        "tipo": "Boleto"
+      },
+      {
+        "id": 4,
+        "tipo": "Pix"
       }
     ]
 

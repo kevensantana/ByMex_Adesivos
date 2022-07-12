@@ -2,13 +2,13 @@
    <main>
       <div class="containerShopping">
          <h3>Compras</h3>
-         <div class="card">
+         <div class="card" v-for="adesivo in adesivos" :key="adesivo.id">
             <div class="image">
-               <img src="" alt="">
+               <img :src="adesivo.image" alt="">
             </div>
             <div class="info">
-               <h3>Nome do produto</h3>
-               <p>Descrição</p>
+               <h3 :value="adesivo.tipo">{{adesivo.tipo}}</h3>
+               <p :value="adesivo.descricao">Descrição</p>
                <span>Valor: R$20 </span>
             </div>
             
@@ -25,23 +25,30 @@
 
 
 <script>
-  export default{
-    name: 'ShoppingInfo',
-    data(){
-      return{
-         title: null,
-         descricao: null,
-         valor: null,
-         qtd: null
-      }
+   import Card from './Card.vue';
+
+
+  export default {
+    name: "ShoppingInfo",
+    data() {
+        return {
+            adesivos: null
+        };
     },
+   
+   components: { Card },
     methods: {
-      async getAdesivos() {
-         const req = await fetch("http://localhost:3000/infoAdesivos");
-         const data = await req.json();
-      }
-    }
-  }
+        async getAdesivos() {
+            const req = await fetch("http://localhost:3000/infoadesivos");
+            const data = await req.json();
+            this.adesivos = data.adesivos;
+        }
+    },
+    mounted() {
+        this.getAdesivos();
+    },
+
+}
 
 </script>
 
@@ -50,7 +57,7 @@
 <style scoped>
 
 main{
-   width: calc(100% - 74%);
+   width: 25%;
    height: 78vh;
    position: fixed;
    right: 5%;
@@ -71,12 +78,11 @@ main{
    gap: 1rem;
    padding: 1rem 0;
    border-bottom: 1px solid #ccc;
-
 }
 
-.image{
-   width: 7rem;
-   height: 7rem;
+.image img{
+   width: 8rem;
+   height: 6rem;
    background: #ccc;
    border-radius: .5rem;
 }

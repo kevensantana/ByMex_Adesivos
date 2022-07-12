@@ -1,15 +1,15 @@
 <template>
-    <NavBar/>
+    <NavBar id="navBar"/>
     <div>
       <router-view></router-view>
-      <ShoppingInfo />
+
     </div>
 </template>
 
 <script>
   import NavBar from './components/NavBar.vue'
   import Home from './views/Home.vue'
-  import ShoppingInfo from './components/ShoppingInfo.vue'
+  import Cart from './views/Cart.vue'
 
 
 export default {
@@ -17,7 +17,7 @@ export default {
   components: {
     NavBar,
     Home,
-    ShoppingInfo
+    Cart
 },
   
 }
@@ -53,7 +53,6 @@ body{
   font-family: 'DM Sans', sans-serif;
   color: #171717;
 
-  width: 90%;
   margin: auto;
 }
 
@@ -62,6 +61,14 @@ a{
   text-decoration: none;
 }
 
+
+#navBar{
+  margin-bottom: 4rem;
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  background: #ccc;
+}
 
 /* #app {
   color: #2c3e50;

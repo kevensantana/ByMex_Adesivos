@@ -5,23 +5,25 @@
             <h1>Produtos</h1>
             <span>Selecione seus adesivos.</span>
          </div>
-        
         <Card />
       </div>
    </main>
+        <ShoppingInfo/>
 </template>
 
 
 <script>
 import { ref } from 'vue'
 import Card from '../components/Card.vue'
+import ShoppingInfo from '../components/ShoppingInfo.vue'
 
 
 export default {
   nome: 'Home',
   components: {
     Card,
-  },
+    ShoppingInfo
+},
   data() {
       return{
           count: ref(''),
@@ -39,18 +41,16 @@ export default {
 <style scoped>
 
 main{
-  display: flex;
-  width: 70%;
   height: 78vh;
   /* border: 1px solid #ccc; */
   border-radius: .5rem;
-  padding-top: 10rem;
 
 }
 
 .containerHome{
-  padding: 1rem 3rem;
-  width: 100%;
+  width: 65%;
+  padding: 12rem 3rem 0; 
+  margin-left: 5%;
 }
 
 .title{
