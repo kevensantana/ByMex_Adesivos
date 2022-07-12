@@ -49,7 +49,7 @@ main{
 
 .containerHome{
   width: 65%;
-  padding: 12rem 3rem 0; 
+  padding: 10rem 3rem 0; 
   margin-left: 5%;
 }
 

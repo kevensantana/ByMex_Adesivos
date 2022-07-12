@@ -34,27 +34,27 @@
       }
     ]
   },
-
-  "Pagamentos": {
-    "formaPagamento": [
-      {
-        "id": 1,
-        "tipo": "Cartão de crédito"
-      },
-      {
-        "id": 2,
-        "tipo": "Cartão de débito"
-      },
-      {
-        "id": 3,
-        "tipo": "Boleto"
-      },
-      {
-        "id": 4,
-        "tipo": "Pix"
-      }
+  "compras": {
+    "opcionais": [
+      1,
+      2,
+      3,
+      4
     ]
-
+  },
+  "form": {
+    "nome": null,
+    "sobrenome": null,
+    "email": null,
+    "tel": null,
+    "endereco": "232",
+    "pais": null,
+    "estado": null,
+    "cep": null,
+    "tipo": null,
+    "numCartao": null,
+    "nomeCartao": null,
+    "dataCartao": null,
+    "cvv": null
   }
-
 }

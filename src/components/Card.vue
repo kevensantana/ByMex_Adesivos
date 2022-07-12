@@ -1,19 +1,28 @@
 <template>
-
-  <div class="cards">
-    <div class="card" v-for="adesivo in adesivos" :key="adesivo.id">
-        <div class="image">
-          <img :src="adesivo.image" alt="Adesivo">
-        </div>
-      <div class="info">
-        <span :value="adesivo.valor">{{ adesivo.valor.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}}</span>
-        <h3 :value="adesivo.title">{{adesivo.title}}</h3>
-        <p :value="adesivo.descricao">{{adesivo.descricao}}</p>
+  <div class="containerCard">
+    <div class="cards">
+      <div class="card" v-for="adesivo in adesivos" :key="adesivo.id" >
+          <div  class="image">
+            <img  :src="adesivo.image" alt="Adesivo">
+          </div>
+          <div class="info">
+            <span :value="adesivo.valor">{{ adesivo.valor.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}}</span>
+            <h3 :value="adesivo.title">{{adesivo.title}}</h3>
+            <p :value="adesivo.descricao">{{adesivo.descricao}}</p>
+            <div class="checkboxONE">
+              <input type="checkbox" name="opcionais" v-model="opcionais" :value="adesivo.id">
+              <span>Escolha seu adesivo</span>
+            </div>
+          </div>
       </div>
-
-        <button type="type" onclick="$emit('createCart')">Comprar</button>
     </div>
+    <form @submit="createCompras">            
+      <div class="btnCard">
+        <button onclick="location.reload();" type="submit">Comprar</button>
+      </div>   
+    </form>
   </div>
+
 </template>
 
 <script>
@@ -21,23 +30,48 @@
 
 export default{
     name: 'Card',
-    emits:['createCart'],
-
     data(){
        return{
-        adesivos: null
+        adesivos: null,
+        compras:null,
+        idCompras:null,
+        opcionais: [],
        }
     },
      methods: {
       async getAdesivos() {
-         const req = await fetch('http://localhost:3000/infoadesivos')
-         const data = await req.json()
+        const req = await fetch('http://localhost:3000/infoadesivos')
+        const data = await req.json()
+        this.adesivos = data.adesivos;
+      },
+      async getCompras() {
+        const req = await fetch("http://localhost:3000/compras");
+        const data = await req.json();
+        this.compras = data.compras;
+        this.opcionaisdata = data.opcionais;
+      },
+      async createCompras(e) {
+        e.preventDefault();
+        const data = {
+          // adesivos: this.adesivos,
+          compras: this.Compras,
+          opcionais: Array.from(this.opcionais)
+        }
+        const dataJson = JSON.stringify(data);
+          const req = await fetch("http://localhost:3000/compras", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: dataJson
+          });
 
-         this.adesivos = data.adesivos;
+        const res = await req.json();
+        
+        console.log(res);
       }
     },
     mounted() {
-     this.getAdesivos()
+     this.getAdesivos(),
+     this.getCompras()
     }
 }
 </script>
@@ -45,16 +79,20 @@ export default{
 
 <style scoped>
 
-.cards{
+.containerCard{
+  padding-bottom: 2rem;
+  height: auto;
+}
 
+.cards{
    display: grid;
    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
    grid-gap: 1.5rem 1rem;
     justify-items: center;
     align-items: stretch;
   /* padding-left: 2rem ; */
-    padding-top: 2rem ;
     padding: 1rem;
+  
 }
 
 .card{
@@ -64,7 +102,7 @@ export default{
   justify-content: end;
 
   width: 18rem;
-  height: 22rem;
+  height: 21rem;
 
   border-radius: .5rem;
 
@@ -82,12 +120,20 @@ export default{
    transform: translateY(-7px);
 }
 
-.card button{
-  width: 50%;
-  height: 3rem;
+.btnCard{
+  width: 100%;
   margin: auto;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.btnCard button{
+  /* position: fixed;
+  bottom: 3%; */
   cursor: pointer;
-  padding: .5rem;
+  padding: 1rem 5rem;
   border: none;
   border-radius: .5rem;
   color: #fff;
@@ -96,8 +142,17 @@ export default{
   font-weight: bold;
 }
 
-.card button:hover{
+.btn-Card button:hover{
   opacity: .8;
+
+}
+
+.checkboxONE{
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
 }
 
 .image{
@@ -121,6 +176,10 @@ export default{
 
 .info{
   padding: 1rem;
+}
+
+.info input[chackbox]{
+    padding: 2rem;
 }
 
 .info h3{

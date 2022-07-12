@@ -1,36 +1,16 @@
 <template>
-    <main>
-      <h1>Compras</h1>
-      <div class="containerCart">
-        <ul>
-          <li v-for="adesivo in adesivos" :key="adesivo.id">
-            <div class="image">
-               <img :src="adesivo.image" alt="">
-            </div>
-            <div class="info">
-              <h3 :value="adesivo.title">{{adesivo.title}}</h3>
-              <span :value="adesivo.valor">{{ adesivo.valor.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}}</span>
-              <p :value="adesivo.descricao">{{adesivo.descricao}}</p>
-            </div>
-            
-            <div class="qtd">
-              <select name="qtd" id="qtd">
-                <option value="adesivo.qtd">{{adesivo.qtd}}</option>
-              </select>
-            </div>
-          </li>
-        </ul>
-      </div>     
-
+    <div class="cart">
+     
       <FormCompras />
-
-
-    </main>
+      <ShoppingInfo id=shoppingInfo />
+    
+    </div>
 </template>
 
 
 <script>
 import FormCompras from '../components/FormCompras.vue';
+import ShoppingInfo from '../components/ShoppingInfo.vue';
 
 export default {
     name: "Cart",
@@ -39,7 +19,7 @@ export default {
             adesivos: null
         };
     },
-    components: { FormCompras },
+    components: { FormCompras, ShoppingInfo },
     methods: {
         async getAdesivos() {
             const req = await fetch("http://localhost:3000/infoadesivos");
@@ -57,14 +37,14 @@ export default {
 
 <style scoped>
 
-main{
+.cart{
   width: 90%;
   border-radius: .5rem;
   margin: auto;
 
   padding-top: 12rem; 
-  
 }
+
 
 .containerCart{
   width: 100%;
