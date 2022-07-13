@@ -11,14 +11,16 @@
             <p :value="adesivo.descricao">{{adesivo.descricao}}</p>
             <div class="checkboxONE">
               <input type="checkbox" name="opcionais" v-model="opcionais" :value="adesivo.id">
-              <span>Escolha seu adesivo</span>
+              <span>Escolha seu adesivo</span>              
             </div>
+
+            <count/>               
           </div>
       </div>
     </div>
     <form @submit="createCompras">            
       <div class="btnCard">
-        <button onclick="location.reload();" type="submit">Comprar</button>
+        <button onclick="location.reload();" v-on:click="quantidade" type="submit">Comprar</button>
       </div>   
     </form>
   </div>
@@ -26,12 +28,13 @@
 </template>
 
 <script>
-
-
+import Count from './Count.vue'
 export default{
-    name: 'Card',
+  components: { Count },
+  name: 'Card',
+ 
     data(){
-       return{
+      return{
         adesivos: null,
         compras:null,
         idCompras:null,
@@ -40,25 +43,25 @@ export default{
     },
      methods: {
       async getAdesivos() {
-        const req = await fetch('http://localhost:3000/infoadesivos')
+        const req = await fetch('http://localhost:3333/infoadesivos')
         const data = await req.json()
         this.adesivos = data.adesivos;
       },
       async getCompras() {
-        const req = await fetch("http://localhost:3000/compras");
+        const req = await fetch("http://localhost:3333/compras");
         const data = await req.json();
         this.compras = data.compras;
-        this.opcionaisdata = data.opcionais;
+        this.opcionaisdata = data.opcionais
       },
       async createCompras(e) {
         e.preventDefault();
         const data = {
           // adesivos: this.adesivos,
           compras: this.Compras,
-          opcionais: Array.from(this.opcionais)
+          opcionais: Array.from(this.opcionais),
         }
         const dataJson = JSON.stringify(data);
-          const req = await fetch("http://localhost:3000/compras", {
+          const req = await fetch("http://localhost:3333/compras", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: dataJson
@@ -66,8 +69,10 @@ export default{
 
         const res = await req.json();
         
+        
         console.log(res);
       }
+        
     },
     mounted() {
      this.getAdesivos(),
@@ -102,7 +107,7 @@ export default{
   justify-content: end;
 
   width: 18rem;
-  height: 21rem;
+  height: 22rem;
 
   border-radius: .5rem;
 
@@ -154,6 +159,8 @@ export default{
   align-items: center;
   gap: .5rem;
 }
+
+
 
 .image{
   width: 100%;

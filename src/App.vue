@@ -2,7 +2,6 @@
     <NavBar id="navBar"/>
     <div>
       <router-view></router-view>
-
     </div>
 </template>
 
@@ -23,8 +22,6 @@ export default {
 }
 </script>
 
-
-
 <style>
 
 *{
@@ -40,7 +37,6 @@ export default {
 html {
   scroll-behavior: smooth;
 }
-
 
 html,
 body{
@@ -69,9 +65,4 @@ a{
   width: 100%;
   background: #ccc;
 }
-
-/* #app {
-  color: #2c3e50;
-  
-} */
 </style>

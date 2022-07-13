@@ -36,8 +36,6 @@
   },
   "compras": {
     "opcionais": [
-      1,
-      2,
       3,
       4
     ]
@@ -47,7 +45,7 @@
     "sobrenome": null,
     "email": null,
     "tel": null,
-    "endereco": "232",
+    "endereco": "311",
     "pais": null,
     "estado": null,
     "cep": null,

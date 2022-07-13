@@ -159,7 +159,7 @@ import Message from './Message.vue';
     },
     methods: {
         async getForm() {
-            const req = await fetch("http://localhost:3000/form");
+            const req = await fetch("http://localhost:3333/form");
             const data = await req.json();
             this.form = data.form;
         },
@@ -183,7 +183,7 @@ import Message from './Message.vue';
                 cvv: this.cvv,
             };
             const dataJson = JSON.stringify(data);
-            const req = await fetch("http://localhost:3000/form", {
+            const req = await fetch("http://localhost:3333/form", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: dataJson

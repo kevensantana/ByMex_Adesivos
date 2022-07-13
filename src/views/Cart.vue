@@ -22,7 +22,7 @@ export default {
     components: { FormCompras, ShoppingInfo },
     methods: {
         async getAdesivos() {
-            const req = await fetch("http://localhost:3000/infoadesivos");
+            const req = await fetch("http://localhost:3333/infoadesivos");
             const data = await req.json();
             this.adesivos = data.adesivos;
         }

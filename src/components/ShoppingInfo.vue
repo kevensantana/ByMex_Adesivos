@@ -1,6 +1,6 @@
 <template>
    <div v-for="adesivo in adesivos" :key="adesivo.id" class="shopping">
-       <div class="containerShopping">
+      <div class="containerShopping">
          <h3>Compras</h3>
          <div class="card" v-for="opc in opcionais" :key="opc.id">
             <div  class="image">
@@ -8,13 +8,11 @@
             </div>
             <div class="info">
                <h3 v-if="adesivo.id == opc" :value="adesivo.title">{{adesivo.title}}</h3>
-               <p  v-if="adesivo.id == opc" :value="adesivo.descricao">{{adesivo.descricao}}</p>
+               <p v-if="adesivo.id == opc" :value="adesivo.descricao">{{adesivo.descricao}}</p>
                <span v-if="adesivo.id == opc" :value="adesivo.valor">{{ adesivo.valor.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}}</span>
             </div>   
          </div>
-            <div class="calcTotal">
-              <span >Total: </span>
-            </div>
+      
       </div>
       <div class="btn-acesso">
          <router-link to="/carrinho">Acessar carrinho</router-link>
@@ -25,43 +23,42 @@
 
 <script>
    import Card from './Card.vue';
-
-
-export default {
-  name: "ShoppingInfo",
-  data() {
-      return {
-          adesivos: null, 
-          compras: null,
-          opcionais: null,
-      };
-  },
-   
-  components: { Card },
-  methods: {
-      async getAdesivos() {
-          const req = await fetch("http://localhost:3000/infoadesivos");
-          const data = await req.json();
-          this.adesivos = data.adesivos;
+   import Count from './Count.vue';
+   export default {
+      name: "ShoppingInfo",
+      data() {
+         return {
+            adesivos: null, 
+            compras: null,
+            opcionais: null,
+            quantidade: null,
+         };
       },
-      async getCompras() {
-        const req = await fetch("http://localhost:3000/compras");
-          const data = await req.json();
-          this.opcionais = data.opcionais;
-          this.compras = data.compras;
+      
+      components: { 
+         Card, 
+         Count 
+      },
+      methods: {
+         async getAdesivos() {
+            const req = await fetch("http://localhost:3333/infoadesivos");
+            const data = await req.json();
+            this.adesivos = data.adesivos;
+         },
+         async getCompras() {
+         const req = await fetch("http://localhost:3333/compras");
+            const data = await req.json();
+            this.opcionais = data.opcionais;
+            this.compras = data.compras;
 
-          console.log(this.opcionais)
-
-
-    },
-  },
-  mounted() {
-      this.getAdesivos();
-      this.getCompras();
-  },
-
-}
-
+            console.log(this.opcionais)
+         },
+      },
+         mounted() {
+            this.getAdesivos();
+            this.getCompras();
+      },
+   }
 </script>
 
 
@@ -74,22 +71,17 @@ export default {
    position: fixed;
    right: 5%;
    top: 18%;
-   
 }
 
 .containerShopping{
-   
    padding: 2rem;
    height: 90%;
    border: 1px solid #ccc;
    border-radius: .5rem;
    z-index: 10;
-   /* overflow-y: auto; */
-
 }
 
-.card{
-  
+.card{ 
    display: flex;
    gap: 1rem;
    padding: 1rem 0;
@@ -102,7 +94,6 @@ export default {
    background: #ccc;
    border-radius: .5rem;
 }
-
 
 .info{
    width: 65%;
@@ -140,9 +131,6 @@ export default {
 .qtd{
    padding-right: 1rem;
 }
-
-
-
 
 .btn-acesso{
    width: 100%;

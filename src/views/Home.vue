@@ -17,7 +17,6 @@ import { ref } from 'vue'
 import Card from '../components/Card.vue'
 import ShoppingInfo from '../components/ShoppingInfo.vue'
 
-
 export default {
   nome: 'Home',
   components: {
@@ -49,7 +48,7 @@ main{
 
 .containerHome{
   width: 65%;
-  padding: 10rem 3rem 0; 
+  padding: 12rem 3rem 0; 
   margin-left: 5%;
 }
 

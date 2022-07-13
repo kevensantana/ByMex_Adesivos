@@ -4,7 +4,6 @@
          <span><router-link to="/">ByMex Adesivos</router-link></span>
             <ul>
                <li><router-link to="/">Home</router-link></li>
-               <li><router-link to="/sobre">Sobre</router-link></li>
                <li><router-link to="/carrinho">Carrinho</router-link></li>
             </ul>
       </div>
