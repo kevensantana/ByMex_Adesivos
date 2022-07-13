@@ -107,7 +107,7 @@ export default{
   justify-content: end;
 
   width: 18rem;
-  height: 22rem;
+  height: 25rem;
 
   border-radius: .5rem;
 
